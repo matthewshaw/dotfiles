@@ -1,3 +1,7 @@
+##
+## Aliases/Environment
+##
+
 # source the users bashrc if it exists
 if [[ -f "${HOME}/.bashrc" ]] ; then
   source "${HOME}/.bashrc"
@@ -43,7 +47,68 @@ if [[ -e "/usr/bin/ls" ]]; then
     alias dir=ls
 fi
 
+# Finds all git or svn working copies under a given directory
+# Caveat: older .svn versions use multiple .svn directories
+# and this command will return a ton of garbage for them
+if [[ -e "/usr/bin/find" ]]; then
+    alias getAllWorkingCopies='find . -name ".svn" -printf "%h\n"'
+fi
+
 export TERM=ansi
+
+##
+## Custom functions
+##
+
+function checkdeps() {
+    local return=0
+
+    for dep in $@; do
+        if ! [[ -e $dep ]]; then
+            echo "Did not find required binary $dep"
+            return=-1
+        fi
+    done
+
+   echo $return 
+}
+
+function tailr() {
+    REFRESH_RATE=2
+    DEPENDSON="/usr/bin/wget"
+    if [[ ! $(checkdeps $DEPENDSON) -eq 0 ]]; then
+        return;
+    fi
+
+    if [[ ! `expr match "$1" "http://"` ]]; then
+        echo "Must specify an HTTP URL as the first argument"
+        return
+    fi
+
+    if [[ -z $2 && $2 =~ '^[0-9+$' ]]; then
+        REFRESH_RATE=$2
+    fi
+
+    while true; do
+        /usr/bin/wget -qO- $1 | tail -200
+        sleep $REFRESH_RATE
+
+        if [[ $(checkdeps "/usr/bin/clear") -eq 0 ]]; then
+            /usr/bin/clear
+        else
+            echo "/usr/bin/clear not found, consider installing curses for this to work propertly"
+            sleep 1;
+        fi
+    done
+}
+
+##
+## Inclusions
+##
+
+# Get local customizations
+. .local_bash_profile
 
 # Smart cd history, invoke with cd --, change to a dir in the list with cd -#
 . .acd_func.sh
+
