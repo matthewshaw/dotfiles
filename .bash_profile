@@ -107,12 +107,12 @@ function tailr() {
 ##
 
 # Get local customizations if they exist
-if [[ -e ~/.local_bash_profile ]]; then
+if [[ -e .local_bash_profile ]]; then
     . .local_bash_profile
 fi
 
 # Smart cd history, invoke with cd --, change to a dir in the list with cd -#
-if [[ -e ~/.acd_func.sh ]]; then
+if [[ -e .acd_func.sh ]]; then
     . .acd_func.sh
 fi
 

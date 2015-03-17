@@ -1,0 +1,7 @@
+[user]
+	name = <NAME>
+	email = <EMAIL>
+[core]
+    autocrlf = true
+[push]
+	default = simple
