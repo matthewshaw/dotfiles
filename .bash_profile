@@ -27,4 +27,10 @@ if [[ -e "/usr/bin/less" ]]; then
     alias more="less -X"
 fi
 
+if [[ -e "/usr/bin/grep" ]]; then
+    alias rgrep="grep -I -R --exclude-dir='.*'"
+fi
 
+# On Cygwin, don't run an X program to ask me for a password please
+export SSH_ASKPASS=""
+export GIT_ASKPASS=""
