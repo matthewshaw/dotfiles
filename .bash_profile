@@ -28,6 +28,7 @@ if [[ -e "/usr/bin/less" ]]; then
 fi
 
 if [[ -e "/usr/bin/grep" ]]; then
+    alias grep='grep --color'
     alias rgrep="grep -I -R --exclude-dir='.*'"
 fi
 
@@ -36,3 +37,13 @@ if [[ `uname -o` -eq 'Cygwin' ]]; then
     export SSH_ASKPASS=""
     export GIT_ASKPASS=""
 fi
+
+if [[ -e "/usr/bin/ls" ]]; then
+    alias ls='ls --color'
+    alias dir=ls
+fi
+
+export TERM=ansi
+
+# Smart cd history, invoke with cd --, change to a dir in the list with cd -#
+. .acd_func.sh
