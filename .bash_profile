@@ -37,7 +37,7 @@ if [[ -e "/usr/bin/grep" ]]; then
 fi
 
 # On Cygwin, don't try to run an X program to ask me for a password please
-if [[ `uname -o` -eq 'Cygwin' ]]; then 
+if [ `uname -o` == 'Cygwin' ]; then 
     export SSH_ASKPASS=""
     export GIT_ASKPASS=""
 fi
