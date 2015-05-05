@@ -59,7 +59,6 @@ export TERM=ansi
 ##
 ## Custom functions
 ##
-
 function checkdeps() {
     local return=0
 
