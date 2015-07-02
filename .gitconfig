@@ -1,6 +1,6 @@
 [user]
-	name = <NAME>
-	email = <EMAIL>
+	name = Matt Shaw
+	email = matt@fiddleheadtech.com
 [core]
     autocrlf = true
 [push]
