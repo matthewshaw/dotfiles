@@ -1,7 +1,8 @@
 [user]
-	name = Matt Shaw
-	email = matt@fiddleheadtech.com
+  name = Matt Shaw
+  email = matt.shaw@fiddlehead.io
 [core]
-    autocrlf = true
+  autocrlf = false
+  eol = lf
 [push]
-	default = simple
+  default = simple
