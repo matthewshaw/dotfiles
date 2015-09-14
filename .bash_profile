@@ -47,6 +47,11 @@ if [[ -e "/usr/bin/ls" ]]; then
     alias dir=ls
 fi
 
+# Set shell prompt
+if [[ $SHELL == '/bin/bash' ]]; then
+  export PS1='\u@\H:\w$ '
+fi
+
 # Finds all git or svn working copies under a given directory
 # Caveat: older .svn versions use multiple .svn directories
 # and this command will return a ton of garbage for them
