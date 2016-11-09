@@ -42,10 +42,8 @@ if [ `uname -o` == 'Cygwin' ]; then
     export GIT_ASKPASS=""
 fi
 
-if [[ -e "/usr/bin/ls" ]]; then
-    alias ls='ls --color'
-    alias dir=ls
-fi
+alias ls='ls --color'
+alias dir=ls
 
 # Set shell prompt
 if [[ $SHELL == '/bin/bash' ]]; then

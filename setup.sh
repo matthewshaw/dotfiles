@@ -7,10 +7,11 @@ SCRIPT_LOCATION=$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )
 NAME="$1"
 EMAIL="$2"
 
+SED=`which sed`
 if [[ "$NAME" != "" && "$EMAIL" != "" ]]; then
-    if [[ $(checkdeps "/usr/bin/sed") -eq 0 ]]; then
-        sed -i "s/<NAME>/$NAME/g" "$SCRIPT_LOCATION"/.gitconfig
-        sed -i "s/<EMAIL>/$EMAIL/g" "$SCRIPT_LOCATION"/.gitconfig
+    if [[ $(checkdeps "$SED") -eq 0 ]]; then
+        $SED -i "s/<NAME>/$NAME/g" "$SCRIPT_LOCATION"/.gitconfig
+        $SED -i "s/<EMAIL>/$EMAIL/g" "$SCRIPT_LOCATION"/.gitconfig
     fi
 fi
 
